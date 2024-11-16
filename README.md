@@ -13,4 +13,5 @@ Based on connectivity issues, the API might take a bit to initialize and start.
 # Frontend
 
 1. `cd frontend`
-2. `npm run dev`
+2. `npm i`
+3. `npm run dev`
