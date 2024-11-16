@@ -1,6 +1,7 @@
 # MINDMATE
 This is a decentralized app built on the Polygon blockchain. Right now it is deployed on the Amoy testnet. You can use metamask to connect to the app
 
+
 Steps to run the project -
 
 # Backend
