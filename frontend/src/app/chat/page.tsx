@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Separator } from '@/components/ui/separator'
 import { Header } from '@/components/Header'
+import { useAccount } from 'wagmi'
 
 interface Message {
   user: string
@@ -26,7 +27,7 @@ interface Message {
 export default function Component() {
   const [messages, setMessages] = React.useState<Message[]>([])
   const [input, setInput] = React.useState('')
-  const username = 'Tarush'
+  const account = useAccount();
   const scrollAreaRef = React.useRef<HTMLDivElement>(null)
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true)
 
@@ -39,7 +40,7 @@ export default function Component() {
   async function sendMessage() {
     if (input.trim() !== '') {
       const message: Message = {
-        user: username,
+        user: account.address as string,
         message: input.trim(),
       }
 
@@ -142,11 +143,11 @@ export default function Component() {
                       {message.user === 'MindMate' ? (
                         <AvatarImage src="/chatbot.png" alt="Chatbot Avatar" />
                       ) : (
-                        <AvatarFallback>{username.charAt(0)}</AvatarFallback>
+                        <AvatarFallback>{"0x"}</AvatarFallback>
                       )}
                     </Avatar>
                     <div>
-                      <p className="text-sm font-semibold">{message.user}</p>
+                      <p className="text-sm font-semibold">{message.user.slice(0, 10)}...</p>
                       <p className="text-sm">{message.message}</p>
                     </div>
                   </CardContent>
